@@ -129,5 +129,15 @@
         window.addEventListener("DOMContentLoaded", loadInfo);
     </script>
 
+    <script>
+async function loadInfo() {
+    const res = await fetch("https://text-api.sillymute.pp.ua/info");
+    document.getElementById("infoBox").textContent = await res.text();
+}
+window.addEventListener("DOMContentLoaded", loadInfo);
+</script>
+
+
 </body>
 </html>
+
