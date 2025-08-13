@@ -1,162 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Silly</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #1e1e2f;
-            --box-color: #2b2b3d;
-            --accent-color: #9f86c0;
-            --text-color: #f0f0f0;
-            --button-hover: #3a3a52;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Quicksand', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            position: relative;
-            min-height: 100vh;
-            overflow-x: hidden;
-            padding-top: 80px;
-        }
-        .background-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: url('background.gif') center center / cover no-repeat;
-            opacity: 0.2;
-        }
-        .dark-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background-color: rgba(30, 30, 47, 0.85);
-        }
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #252537;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-            z-index: 10;
-        }
-        header h1 { margin: 0; font-size: 28px; font-weight: 600; }
-        .logo { position: absolute; top: 15px; right: 20px; height: 40px; }
-        .info-box {
-            margin: 20px auto;
-            padding: 20px 30px;
-            max-width: 700px;
-            background-color: var(--box-color);
-            border-left: 5px solid var(--accent-color);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            font-size: 18px;
-            line-height: 1.6;
-            position: relative;
-            z-index: 1;
-            white-space: pre-wrap;
-        }
-        .nav-buttons {
-            text-align: center;
-            margin-bottom: 100px;
-            position: relative;
-            z-index: 1;
-        }
-        .nav-buttons button {
-            margin: 10px;
-            padding: 12px 24px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 8px;
-            background-color: var(--box-color);
-            color: var(--text-color);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        .nav-buttons button:hover { background-color: var(--button-hover); transform: translateY(-2px); }
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #181827;
-            text-align: center;
-            padding: 12px 0;
-            color: #aaa;
-            font-size: 14px;
-            z-index: 2;
-            box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Silly</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg-color: #1e1e2f;
+    --box-color: #2b2b3d;
+    --accent-color: #9f86c0;
+    --text-color: #f0f0f0;
+    --button-hover: #3a3a52;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding-top: 80px;
+}
+.background-overlay, .dark-layer {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+.background-overlay {
+    z-index: -2;
+    background: url('background.gif') center center / cover no-repeat;
+    opacity: 0.2;
+}
+.dark-layer {
+    z-index: -1;
+    background-color: rgba(30, 30, 47, 0.85);
+}
+header {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    background-color: #252537;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+header h1 { margin: 0; font-size: 28px; font-weight: 600; }
+.logo { position: absolute; top: 15px; right: 20px; height: 40px; }
+.info-box {
+    margin: 20px auto;
+    padding: 20px 30px;
+    max-width: 700px;
+    background-color: var(--box-color);
+    border-left: 5px solid var(--accent-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-size: 18px;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    white-space: pre-wrap;
+}
+.nav-buttons { text-align: center; margin-bottom: 100px; position: relative; z-index: 1; }
+.nav-buttons button {
+    margin: 10px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--box-color);
+    color: var(--text-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.nav-buttons button:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
+}
+footer {
+    position: fixed;
+    bottom: 0; left: 0; width: 100%;
+    background-color: #181827;
+    text-align: center;
+    padding: 12px 0;
+    color: #aaa;
+    font-size: 14px;
+    z-index: 2;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+}
+</style>
 </head>
 <body>
 
-    <div class="background-overlay"></div>
-    <div class="dark-layer"></div>
+<div class="background-overlay"></div>
+<div class="dark-layer"></div>
 
-    <header>
-        <h1>sillymute.pp.ua</h1>
-        <img src="logo.png" alt=" " class="logo">
-    </header>
+<header>
+    <h1>sillymute.pp.ua</h1>
+    <img src="logo.png" alt="" class="logo">
+</header>
 
-    <div class="info-box" id="infoBox">
-        Loading...
-    </div>
+<div class="info-box" id="infoBox">
+    Loading updates...
+</div>
 
-    <div class="nav-buttons">
-        <button onclick="window.location.href='https://files.sillymute.pp.ua'">Files</button>
-        <button onclick="window.location.href='https://chat.sillymute.pp.ua'">Chat</button>
-    </div>
+<div class="nav-buttons">
+    <button onclick="window.location.href='https://files.sillymute.pp.ua'">Files</button>
+    <button onclick="window.location.href='https://chat.sillymute.pp.ua'">Chat</button>
+</div>
 
-    <footer>this is a website</footer>
+<footer>this is a website</footer>
 
-    <script>
-        const infoBox = document.getElementById('infoBox');
-        const infoUrl = 'https://files.sillymute.pp.ua/upload/info.txt?edit';
+<script>
+// URL of your GitHub-hosted info.txt
+const infoURL = 'https://raw.githubusercontent.com/SillyMute/cloudflareredir/main/info.txt';
 
-        async function fetchInfo() {
-            try {
-                const res = await fetch(infoUrl);
-                const htmlText = await res.text();
+async function updateInfo() {
+    try {
+        const res = await fetch(infoURL);
+        if (!res.ok) throw new Error('Failed to fetch info.txt');
+        const text = await res.text();
+        document.getElementById('infoBox').innerText = text;
+    } catch (err) {
+        document.getElementById('infoBox').innerText = 'Error loading text';
+        console.error(err);
+    }
+}
 
-                // Parse the HTML response
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(htmlText, 'text/html');
-                const codeElem = doc.querySelector('code.language-txt');
+// Initial load
+updateInfo();
 
-                if (codeElem) {
-                    // Remove line number spans
-                    const lineNumbers = codeElem.querySelectorAll('.line-numbers-rows');
-                    lineNumbers.forEach(el => el.remove());
-
-                    infoBox.textContent = codeElem.textContent.trim();
-                } else {
-                    infoBox.textContent = 'No text found.';
-                }
-            } catch (err) {
-                console.error(err);
-                infoBox.textContent = 'Failed to fetch info.';
-            }
-        }
-
-        // Initial fetch
-        fetchInfo();
-
-        // Refresh every 5 seconds
-        setInterval(fetchInfo, 5000);
-    </script>
+// Auto-update every 10 seconds
+setInterval(updateInfo, 10000);
+</script>
 
 </body>
 </html>
