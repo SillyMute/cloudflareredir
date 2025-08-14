@@ -20,7 +20,7 @@
             position: relative;
             min-height: 100vh;
             overflow-x: hidden;
-            padding-top: 80px;
+            padding-top: 100px; /* leave space for floating header */
         }
         .background-overlay {
             position: fixed;
@@ -43,16 +43,22 @@
         }
         header {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #252537;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(37, 37, 55, 0.95);
+            padding: 15px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 800px;
+            width: calc(100% - 40px); /* leaves gap on both sides */
         }
         header h1 { margin: 0; font-size: 28px; font-weight: 600; }
-        .logo { position: absolute; top: 15px; right: 20px; height: 40px; }
+        .logo { height: 40px; margin-left: 15px; border-radius: 8px; }
         .info-box {
             margin: 20px auto;
             padding: 20px 30px;
@@ -65,7 +71,7 @@
             line-height: 1.6;
             position: relative;
             z-index: 1;
-            white-space: pre-wrap; /* preserve line breaks */
+            white-space: pre-wrap;
         }
         .nav-buttons {
             text-align: center;
@@ -145,10 +151,7 @@
             }
         }
 
-        // initial load
         loadText();
-
-        // poll every 1 second for near real-time updates
         setInterval(loadText, 1000);
     </script>
 
