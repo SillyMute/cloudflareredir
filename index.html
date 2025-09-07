@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Silly</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Added for mobile scaling -->
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -120,13 +121,52 @@
         /* Media styling with fixed max size */
         .info-box img, 
         .info-box video {
-            max-width: 500px;   /* change this to adjust size */
-            max-height: 200px;  /* prevents oversized vertical media */
+            max-width: 400px;   /* adjust this for desktop */
+            max-height: 300px;
             margin-top: 12px;
             border-radius: 8px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.4);
             object-fit: contain;
             display: block;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding-top: 120px; /* more space for header */
+            }
+            header {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+            header h1 {
+                font-size: 24px;
+                text-align: center;
+            }
+            .logo {
+                height: 50px;
+                margin: 10px 0 0 0;
+            }
+            .info-box {
+                font-size: 20px;
+                padding: 25px 20px;
+                max-width: 95%;
+            }
+            .nav-buttons button {
+                font-size: 18px;
+                padding: 14px 28px;
+                margin: 12px;
+            }
+            .info-box img,
+            .info-box video {
+                max-width: 100%;
+                max-height: 250px; /* optional limit for mobile */
+            }
+            footer {
+                font-size: 16px;
+                padding: 15px 0;
+            }
         }
     </style>
 </head>
@@ -172,19 +212,17 @@
                         const trimmed = line.trim();
 
                         if (/\.(png|jpe?g|gif|webp)(\?.*)?$/i.test(trimmed)) {
-                            // Image
                             const img = document.createElement('img');
                             img.src = trimmed;
                             img.alt = "linked image";
                             infoBox.appendChild(img);
                         } else if (/\.(mp4|webm|ogg)(\?.*)?$/i.test(trimmed)) {
-                            // Video
                             const video = document.createElement('video');
                             video.src = trimmed;
                             video.controls = true;
+                            video.preload = "metadata"; // show first frame
                             infoBox.appendChild(video);
                         } else {
-                            // Plain text
                             const p = document.createElement('p');
                             p.textContent = line;
                             infoBox.appendChild(p);
@@ -204,4 +242,3 @@
 
 </body>
 </html>
-
