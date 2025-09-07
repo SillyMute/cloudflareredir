@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Silly</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Added for mobile scaling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -21,7 +21,7 @@
             position: relative;
             min-height: 100vh;
             overflow-x: hidden;
-            padding-top: 100px; /* leave space for floating header */
+            padding-top: 100px; /* space for desktop header */
         }
         .background-overlay {
             position: fixed;
@@ -121,7 +121,7 @@
         /* Media styling with fixed max size */
         .info-box img, 
         .info-box video {
-            max-width: 400px;   /* adjust this for desktop */
+            max-width: 400px;
             max-height: 300px;
             margin-top: 12px;
             border-radius: 8px;
@@ -133,12 +133,16 @@
         /* Mobile adjustments */
         @media (max-width: 600px) {
             body {
-                padding-top: 120px; /* more space for header */
+                padding-top: 0; /* header is no longer fixed */
             }
             header {
+                position: relative; /* scrolls with page */
+                transform: none;
                 flex-direction: column;
                 align-items: center;
-                padding: 20px;
+                width: 100%;
+                padding: 15px 20px;
+                margin-bottom: 15px; /* push text box down */
             }
             header h1 {
                 font-size: 24px;
@@ -161,7 +165,7 @@
             .info-box img,
             .info-box video {
                 max-width: 100%;
-                max-height: 250px; /* optional limit for mobile */
+                max-height: 250px;
             }
             footer {
                 font-size: 16px;
@@ -205,7 +209,6 @@
                     const infoBox = document.getElementById('infoBox');
                     infoBox.innerHTML = ''; // Clear old content
 
-                    // Split into lines
                     const lines = text.split(/\r?\n/);
 
                     lines.forEach(line => {
@@ -220,7 +223,7 @@
                             const video = document.createElement('video');
                             video.src = trimmed;
                             video.controls = true;
-                            video.preload = "metadata"; // show first frame
+                            video.preload = "metadata";
                             infoBox.appendChild(video);
                         } else {
                             const p = document.createElement('p');
