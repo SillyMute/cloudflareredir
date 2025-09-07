@@ -66,7 +66,6 @@
             height: 40px;
             margin-left: 15px;
             border-radius: 8px;
-            /* Blue-tint effect */
             filter: hue-rotate(200deg) saturate(1.4);
         }
         .info-box {
@@ -118,6 +117,14 @@
             z-index: 2;
             box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
         }
+        /* Media styling */
+        .info-box img, 
+        .info-box video {
+            max-width: 100%;
+            margin-top: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
     </style>
 </head>
 <body>
@@ -152,7 +159,35 @@
                 const text = await res.text();
 
                 if (text !== lastText) {
-                    document.getElementById('infoBox').innerText = text;
+                    const infoBox = document.getElementById('infoBox');
+                    infoBox.innerHTML = ''; // Clear old content
+
+                    // Split into lines
+                    const lines = text.split(/\r?\n/);
+
+                    lines.forEach(line => {
+                        const trimmed = line.trim();
+
+                        if (/\.(png|jpe?g|gif|webp)$/i.test(trimmed)) {
+                            // Image
+                            const img = document.createElement('img');
+                            img.src = trimmed;
+                            img.alt = "linked image";
+                            infoBox.appendChild(img);
+                        } else if (/\.(mp4|webm|ogg)$/i.test(trimmed)) {
+                            // Video
+                            const video = document.createElement('video');
+                            video.src = trimmed;
+                            video.controls = true;
+                            infoBox.appendChild(video);
+                        } else {
+                            // Plain text
+                            const p = document.createElement('p');
+                            p.textContent = line;
+                            infoBox.appendChild(p);
+                        }
+                    });
+
                     lastText = text;
                 }
             } catch (err) {
@@ -166,4 +201,3 @@
 
 </body>
 </html>
-
