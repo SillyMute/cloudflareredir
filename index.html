@@ -168,13 +168,13 @@
                     lines.forEach(line => {
                         const trimmed = line.trim();
 
-                        if (/\.(png|jpe?g|gif|webp)$/i.test(trimmed)) {
+                        if (/\.(png|jpe?g|gif|webp)(\?.*)?$/i.test(trimmed)) {
                             // Image
                             const img = document.createElement('img');
                             img.src = trimmed;
                             img.alt = "linked image";
                             infoBox.appendChild(img);
-                        } else if (/\.(mp4|webm|ogg)$/i.test(trimmed)) {
+                        } else if (/\.(mp4|webm|ogg)(\?.*)?$/i.test(trimmed)) {
                             // Video
                             const video = document.createElement('video');
                             video.src = trimmed;
